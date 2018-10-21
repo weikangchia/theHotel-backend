@@ -1,0 +1,35 @@
+service: thehotel-api-server
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: v1
+  region: ap-southeast-1
+  profile: geboto
+  environment: ${file(./serverless.env.json):${opt:stage, self:provider.stage}}
+
+functions:
+  jwtAuthorizer:
+    handler: endpoints/auth/index.handler
+
+  readAllHotel:
+    handler: endpoints/hotel/readAll.handler
+    events:
+      - http:
+          path: hotels
+          method: get
+          cors: true
+          authorizer:
+            name: jwtAuthorizer
+            arn: arn:aws:lambda:ap-southeast-1:380014413561:function:thehotel-api-server-v1-jwtAuthorizer
+            resultTtlInSeconds: 0
+            identitySource: method.request.header.Authorization
+
+  createUser:
+    handler: endpoints/user/create.handler
+    events:
+      - http:
+          path: users
+          method: post
+          cors: true
+          private: true
