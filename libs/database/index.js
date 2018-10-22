@@ -21,9 +21,9 @@ async function initConnection() {
   const startDbTime = new Date().getTime();
   console.log(`${INIT_ACTION} message="creating new database connection"`);
 
-  const connection = await mongoose.connect(process.env.mongodb_uri || 'mongodb://developer:thehotel@cluster0-shard-00-00-dkanx.mongodb.net:27017,cluster0-shard-00-01-dkanx.mongodb.net:27017,cluster0-shard-00-02-dkanx.mongodb.net:27017/thehotel', {
+  const connection = await mongoose.connect(process.env.mongodb_uri, {
     poolSize: 5,
-    replicaSet: process.env.mongodb_replicaSet || 'Cluster0-shard-0',
+    replicaSet: process.env.mongodb_replicaSet,
     ssl: true,
     bufferCommands: false,
     bufferMaxEntries: 0,
