@@ -6,6 +6,14 @@ const policyGenerator = require('../../libs/utils/policyGenerator');
 
 const HANDLER_ACTION = 'action="authHandler"';
 
+/**
+ * Returns the authorization token if it is present.
+ * Else an empty string is returned.
+ *
+ * @param {*} event
+ *
+ * @private
+ */
 function validateToken(event) {
   if (is.propertyDefined(event, 'authorizationToken')) {
     return event.authorizationToken;
