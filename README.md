@@ -1,6 +1,8 @@
 # theHotel Backend Server
 
-The backend server is hosted on AWS, which uses Amazon API Gateway and AWS Lambda.
+<img src="docs/architecture_diagram.png" width="600"><br>
+
+The backend server is hosted on AWS, which mainly uses Amazon API Gateway and AWS Lambda.
 
 Auth0 is used as the trusted provider for authentication and authorization. A authorizer (AWS Lambda) is attached to the API Gateway to verify each incoming request.
 
