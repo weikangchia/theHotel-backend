@@ -19,7 +19,7 @@ module.exports.handler = async (event) => {
       name: 'Beta Hotel',
       service_fee: 25,
       hourly_rate: 30,
-      minute_rate: 0.5,
+      minute_rate: 0.4,
       image_url: 'https://res.cloudinary.com/geboto/image/upload/v1540112510/thehotel/hotel2.jpg',
     },
   ]);
